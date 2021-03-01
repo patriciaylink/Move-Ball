@@ -1,0 +1,124 @@
+<div id="ball1" style="
+  z-index:5;
+  position:absolute;
+  left:50px;
+  top:50px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:lightskyblue">
+</div>
+
+<div id="ball2" style="
+  z-index:5;
+  position:absolute;
+  left:200px;
+  top:200px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:lightseagreen">
+</div>
+
+
+<script>
+
+var ball1 = document.getElementById('ball1');
+var ball2 = document.getElementById('ball2');
+
+var ball1_positionX = 50;
+var ball1_positionY = 50;
+var ball1_velocityX = 50;
+var ball1_velocityY = 50;
+
+var ball2_positionX = 200;
+var ball2_positionY = 200;
+var ball2_velocityX = 50;
+var ball2_velocityY = 50;
+
+
+
+var reverse1 = false;
+var reverse2 = false;
+
+var Xmin = 5;
+var Xmax = window.innerWidth;
+var Ymin = 5;
+var Ymax = window.innerHeight;
+
+console.log(Xmax + " max width");
+console.log(Ymax + " max height");
+console.log(Xmin + " min width");
+console.log(Ymin + " min height");
+
+
+
+function moveBall1() {
+  // two fixed x-axis coordinates (you will use these variable in step 3)
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+var randomX = Math.floor(Math.random()*width);
+var randomY = Math.floor(Math.random()*height);
+if (randomX>(width-50)){ 
+    randomX = width - 50
+  };
+if (randomY>(height-50)){ 
+    randomY = height - 50
+  };
+
+  console.log(randomX + "X");
+  console.log(randomY + "Y");
+
+  if(reverse1 == false){
+      ball1.style.left = randomX + 'px';
+      ball1.style.top = randomY + 'px';
+  } else if(reverse1 == true){
+      ball1.style.left = randomX + 'px';
+      ball1.style.top = randomY + 'px';
+  };
+
+  if(ball1_positionX >= Xmax || ball1_positionX <= Xmin || ball1_positionY >= Ymax || ball1_positionY <= Ymin){
+    reverse1 = !reverse1
+  };
+
+  //console.log(ball1.style.left + " left/right");
+  //console.log(ball1_positionX);
+  //console.log(ball1.style.top + " up/down");
+  //console.log(ball1_positionY);
+};
+
+function moveBall2() {
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+var randomX = Math.floor(Math.random()*width);
+var randomY = Math.floor(Math.random()*height);
+if (randomX>(width-50)){ 
+    randomX = width - 50
+  };
+if (randomY>(height-50)){ 
+    randomY = height - 50
+  };
+
+  if(reverse2 == false){
+      ball2.style.left = randomX + 'px';
+      ball2.style.top = randomY + 'px';
+  } else if(reverse2 == true){
+      ball2.style.left = randomX + 'px';
+      ball2.style.top = randomY + 'px';
+  }
+
+  if(ball2_positionX >= Xmax || ball2_positionX <= Xmin || ball2_positionY >= Ymax || ball2_positionY <= Ymin){
+    reverse2 = !reverse2
+  };
+
+};
+
+
+setInterval(moveBall1, 500);
+setInterval(moveBall2, 500);
+
+
+
+</script>

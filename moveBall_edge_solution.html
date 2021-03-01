@@ -1,0 +1,62 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<script>
+
+var velocity = 100;
+var position = 0;
+var ball = document.getElementById('ball');
+
+// YOUR CODE 
+// ----------------
+
+//Set global variable that would contain the position, velocity and the html element "ball"
+var positionX = 100;
+var positionY = 100;
+
+var reverse = false;
+
+//write a function that can change the position of the html element "ball"
+function moveBall() {
+  // two fixed x-axis coordinates (you will use these variable in step 3)
+  var Xmin = 100;
+  var Xmax = 1000;
+  var Ymin = 100;
+  var Ymax = 500;
+
+  if(reverse == false){
+      positionX = positionX + velocity;
+      ball.style.left = positionX + 'px';
+      positionY = positionY + velocity;
+      ball.style.top = positionY + 'px';
+  } else if(reverse == true){
+      positionX = positionX - velocity;
+      ball.style.left = positionX + 'px';
+      positionY = positionY - velocity;
+      ball.style.top = positionY + 'px';
+  };
+
+  if(positionX >= Xmax || positionX <= Xmin){
+    reverse = !reverse
+  };
+  //if(positionY >= Ymax || positionY <= Ymin){
+  //  reverse = !reverse
+  // };
+
+}
+
+// This call the moveBall function every 100ms
+setInterval(moveBall, 100);
+
+
+// var time = 1000;
+// setInterval(moveLeft,time);
+
+</script>
